@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vision-resource-monitor"
-version = "0.1.0"
+version = "0.1.1"
 description = "Windows system-tray client for a WSL-side resource monitor (monitor-snapshot:v1 feed)"
 readme = "README.md"
 requires-python = ">=3.9"

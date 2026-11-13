@@ -11,7 +11,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 # Public-build flag. A dev tree keeps its live actions (process release, ProcMon
 # capture, ask-Claude launch, the wsl.exe rebuild + update banner). The public
