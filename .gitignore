@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging output
+*.spec.bak
+*.exe
+
+# Local snapshots / scratch
+*.status.json
+status.json
+
+
+# OS
+.DS_Store
+Thumbs.db

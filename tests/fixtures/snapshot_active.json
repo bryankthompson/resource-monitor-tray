@@ -1,0 +1,53 @@
+{
+  "schema": "monitor-snapshot:v1",
+  "t": 1721180000.0,
+  "ts": "2026-07-16T21:00:00",
+  "host": "demo-host",
+  "interval": 2.0,
+  "uptime_s": 2530.0,
+  "gpus": [
+    {
+      "name": "NVIDIA GeForce RTX 5080",
+      "util": 87.0,
+      "mem_used_mib": 9420.0,
+      "mem_total_mib": 16303.0,
+      "temp_c": 61.0,
+      "power_w": 287.0,
+      "power_limit_w": 360.0
+    }
+  ],
+  "gpu_util_history": [10, 20, 40, 70, 90, 87, 80, 60],
+  "activity": {
+    "start_t": 1721179800.0,
+    "peak_util": 92.0,
+    "peak_vram_mib": 10900.0,
+    "vram_total_mib": 16303.0,
+    "workloads": ["tracking-run", "ollama:qwen2.5:7b"]
+  },
+  "history": [
+    {
+      "start_t": 1721176805.0,
+      "end_t": 1721177201.0,
+      "duration_s": 396.0,
+      "peak_util": 92.0,
+      "peak_vram_mib": 10900.0,
+      "vram_total_mib": 16303.0,
+      "workloads": ["tracking-run"]
+    }
+  ],
+  "docker": {
+    "running_count": 3,
+    "unknown_count": 0,
+    "gpu_containers": [
+      {"name": "tracking-run", "image": "pytorch/pytorch:2.7.1-cuda12.8", "status": "Up 4 minutes", "id": "12345abcde"}
+    ]
+  },
+  "ollama": [{"name": "qwen2.5:7b", "size_gb": 4.7, "vram_gb": 4.7}],
+  "host_cpu": {"pct": 27.4, "cores_active": 12, "cores_total": 28, "speed_mhz": 4700.0},
+  "host_ram": {"used_mib": 16000.0, "total_mib": 31900.0, "cached_mib": 9000.0},
+  "runs": [
+    {"label": "result.json", "state": "running", "percent": 42, "message": "Tracked samples 5/12", "last_t": 1721179996.0, "started_t": 1721179900.0, "pid": 4242, "end_message": ""}
+  ],
+  "log_path": "~/.local/state/vision-resource-monitor/gpu-activity.jsonl",
+  "log_status": ""
+}

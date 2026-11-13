@@ -1,0 +1,33 @@
+name: Public CI
+
+on:
+  push:
+    tags: ["v*.*.*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Create clean environment
+        run: python -m venv .venv
+      - name: Install
+        run: .venv/bin/python -m pip install -e ".[gui,dev]" build wheel
+      - name: Test
+        shell: bash
+        run: |
+          set -o pipefail
+          .venv/bin/python -m pytest -q -rs 2>&1 | tee pytest.log
+          if grep -Eiq 'could not import' pytest.log; then
+            echo "pytest skipped a test because an import failed" >&2
+            exit 1
+          fi
+      - name: Build source archive and wheel
+        run: .venv/bin/python -m build --sdist --wheel

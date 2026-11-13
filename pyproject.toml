@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vision-resource-monitor"
+version = "0.1.0"
+description = "Windows system-tray client for a WSL-side resource monitor (monitor-snapshot:v1 feed)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+classifiers = ["License :: OSI Approved :: MIT License"]
+authors = [{ name = "Bryan Thompson" }]
+keywords = ["gpu", "monitor", "tray", "wsl", "pyside6"]
+
+# The pure core (snapshot/reader/state) has NO required deps, so tests and the
+# fake producer run on a bare interpreter. The GUI needs the [gui] extra.
+dependencies = []
+
+[project.optional-dependencies]
+# procmon-parser generates the /LoadConfig PMC for the filtered ProcMon
+# affordance (#87) — GUI-only reach, so it rides the gui extra; the core
+# stays dependency-free and procmonitor.py imports it lazily with a stated
+# cause when absent.
+gui = ["PySide6>=6.5", "procmon-parser>=0.4"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+vision-resource-monitor = "vision_resource_monitor.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-m 'not winps'"
+markers = ["winps: runs a real Windows PowerShell end-to-end test"]
